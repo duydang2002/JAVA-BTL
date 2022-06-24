@@ -47,7 +47,11 @@ public class RegisterScreen extends JFrame implements ActionListener{
         String name = hotenTextField.getText();
         String address = addressTextField.getText();
         String phoneNum =  stdtexTextField.getText();
+        char [] passtoString = passwordf.toCharArray(); 
+        int countNumbers = 0;
+        int countUpperCase=0;
         if (e.getSource()==regisButton){
+            
             String url = "jdbc:mysql://localhost:3306/javadatabase";
             String user = "root";
             String password = "";
@@ -56,7 +60,15 @@ public class RegisterScreen extends JFrame implements ActionListener{
             // String selectAll = "SELECT * FROM `tblseller`";
             boolean emailcheck =false;
             boolean phonecheck = false;
-
+            // check the numbers
+            for (int i = 0;i<passwordf.length();i++){
+                if (Character.isDigit(passtoString[i])){
+                   countNumbers++;
+                }
+                if (Character.isUpperCase(passtoString[i]))
+                    countUpperCase++;
+            }
+            
             try(Connection conn= DriverManager.getConnection(url, user, password)){
             System.out.println("ket noi thanh cong");
             System.out.println(conn.getCatalog());
@@ -115,6 +127,22 @@ public class RegisterScreen extends JFrame implements ActionListener{
                 "Try again",
                 JOptionPane.ERROR_MESSAGE);
         return;
+            }
+            if (countNumbers<2){
+                JOptionPane.showMessageDialog(this,
+                "Not enough numbers!",
+                "Try again",
+                JOptionPane.ERROR_MESSAGE);
+        return;
+
+            }
+            if (countUpperCase<2){
+                JOptionPane.showMessageDialog(this,
+                "Not enough Uppercase!",
+                "Try again",
+                JOptionPane.ERROR_MESSAGE);
+        return;
+
             }
                       System.out.println(passDB.Hashing(passwordf));
                     // select all student
