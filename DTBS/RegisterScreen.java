@@ -136,7 +136,7 @@ public class RegisterScreen extends JFrame implements ActionListener{
         return;
 
             }
-            if (countUpperCase<2){
+            if (countUpperCase<1){
                 JOptionPane.showMessageDialog(this,
                 "Not enough Uppercase!",
                 "Try again",
@@ -180,3 +180,4 @@ public class RegisterScreen extends JFrame implements ActionListener{
         else return false;
     }
 }
+//
