@@ -142,7 +142,6 @@ public class RegisterScreen extends JFrame implements ActionListener{
                 "Try again",
                 JOptionPane.ERROR_MESSAGE);
         return;
-
             }
                       System.out.println(passDB.Hashing(passwordf));
                     // select all student
@@ -165,7 +164,6 @@ public class RegisterScreen extends JFrame implements ActionListener{
                  } 
                  catch(Exception E)
                  {
-              
                     // E.printStackTrace();
                  }
     } 

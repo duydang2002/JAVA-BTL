@@ -19,6 +19,7 @@ public class Customer extends JFrame implements ActionListener  {
     JLabel addAmount = new JLabel("Add Amount");
     JTextField addAmountField = new JTextField(30);
     String email="";
+    
     public Customer(User user){
         email=user.email;
         this.setLayout(new GridLayout(8,1));
