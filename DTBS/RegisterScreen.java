@@ -143,7 +143,7 @@ public class RegisterScreen extends JFrame implements ActionListener{
                 JOptionPane.ERROR_MESSAGE);
         return;
             }
-                      System.out.println(passDB.Hashing(passwordf));
+                    System.out.println(passDB.Hashing(passwordf));
                     // select all student
                     stmt = conn.prepareStatement(sqlInsert);
                     stmt.setString(1, email);
@@ -168,8 +168,7 @@ public class RegisterScreen extends JFrame implements ActionListener{
                  }
     } 
     
-        
-    }
+  }
     private boolean checkPass(){
         if (String.valueOf(passwordField.getPassword()).equals(String.valueOf(repasswordField.getPassword()))) return true;
         else return false;
@@ -180,4 +179,3 @@ public class RegisterScreen extends JFrame implements ActionListener{
         else return false;
     }
 }
-//

@@ -18,20 +18,24 @@ public class Customer extends JFrame implements ActionListener  {
     JFrame addmoneyFrame = new JFrame("Depositing: ");
     JLabel addAmount = new JLabel("Add Amount");
     JTextField addAmountField = new JTextField(30);
-    String email="";
+    static String email="";
+    static int moneyleft;
+    
     
     public Customer(User user){
         email=user.email;
+        System.out.println(email);
         this.setLayout(new GridLayout(8,1));
         addMoney.addActionListener(this);
         nameTextField.setText(user.name);
         nameTextField.setEditable(false);
         addressTextField.setText(user.address);
         addressTextField.setEditable(false);
-        amounTextField.setText(String.valueOf(user.Paid)+"VND");
+        amounTextField.setText(String.valueOf(user.Paid)+" VND");
         amounTextField.setEditable(false);
-        moneyTextField.setText(String.valueOf(user.Money+"VND"));
+        moneyTextField.setText(String.valueOf(user.Money+" VND"));
         moneyTextField.setEditable(false);
+        moneyleft = user.Money;
         this.add(name);
         this.add(nameTextField);
         this.add(addressJLabel);
@@ -40,22 +44,29 @@ public class Customer extends JFrame implements ActionListener  {
         this.add(amounTextField);
         this.add(money);
         this.add(moneyTextField);
+        this.add(addAmount);
+        this.add(addAmountField);
+        this.add(addMoney);
         this.setVisible(true);
         pack();
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
     }
     public void actionPerformed(ActionEvent e)  {
-        String url = "jdbc:mysql://localhost:3306/javadatabase";
+            String url = "jdbc:mysql://localhost:3306/javadatabase";
             String user = "root";
             String password = "";
-            User user2 = null;
+           System.out.println("AO?" + email+ moneyleft);
+
             String sql = "update `tblseller` set `Tiền đã nạp`=? where email=?";
         if (e.getSource()==addMoney){
             try (Connection conn = DriverManager.getConnection(url, user, password)){
                 PreparedStatement PS = conn.prepareStatement(sql);
-                PS.setInt(1, Integer.parseInt( addAmountField.getText()));
+                PS.setInt(1,moneyleft + Integer.valueOf(addAmountField.getText()));
+                moneyleft+= Integer.valueOf(addAmountField.getText());
                 PS.setString(2,email);
+                PS.execute();
+                moneyTextField.setText(String.valueOf(moneyleft)+" VND");
             }
             catch(Exception E){
 
