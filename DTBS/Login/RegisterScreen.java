@@ -1,3 +1,4 @@
+package Login;
 import javax.swing.*;
 
 import Hashing.Hashing;
@@ -90,12 +91,12 @@ public class RegisterScreen extends JFrame implements ActionListener{
             while (rs.next()) {
 
                  if (rs.getString(1).equals(userName)){
-                    emailcheck = true;}
+                    userNameCheck = true;}
                  if (rs.getString(5).equals(phoneNum)){
                     phonecheck = true;
                  }
                  if (rs.getString(9).equals(email)){
-                    userNameCheck= true;
+                    emailcheck= true;
                  }
                  
                 // System.exit(0);
@@ -173,7 +174,7 @@ public class RegisterScreen extends JFrame implements ActionListener{
                     stmt.setString(5,phoneNum);
                     stmt.setInt(6, 0);
                     stmt.setInt(7, 0);
-                    stmt.setString(8,email);
+                    stmt.setString(8    ,email);
                     stmt.execute();
                     // break;
                     // get data from table 'student'

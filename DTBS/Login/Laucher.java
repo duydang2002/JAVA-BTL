@@ -1,6 +1,7 @@
+package Login;
 public class Laucher {
     public static void main(String[] args) {
-      LoginCustomer test = new  LoginCustomer();
       
+      FirstScreen f = new FirstScreen();
     }
 }

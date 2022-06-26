@@ -1,11 +1,14 @@
+package Login;
 import javax.swing.*;
+
 import java.awt.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.awt.event.*;
 
-public class Customer extends JFrame implements ActionListener  {
+
+public class CustomerScreen extends JFrame implements ActionListener  {
     JLabel name = new JLabel("Name :");
     JTextField nameTextField = new JTextField(30);
     JLabel addressJLabel = new JLabel("Address");
@@ -22,7 +25,7 @@ public class Customer extends JFrame implements ActionListener  {
     static int moneyleft;
     
     
-    public Customer(User user){
+    public CustomerScreen(User user){
         userName=user.UserName;
         moneyleft = user.Money;
      

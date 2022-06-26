@@ -1,3 +1,4 @@
+package Login;
 public class User {
     public String name;
     public String UserName;
@@ -6,4 +7,5 @@ public class User {
     public String password;
     public int Paid;
     public int Money;
+    public String email;
 }

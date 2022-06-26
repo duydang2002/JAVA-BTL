@@ -1,3 +1,4 @@
+package Login;
 import java.awt.event.*;
 import java.awt.*;
 import javax.swing.*;
@@ -64,14 +65,9 @@ public class LoginCustomer extends JFrame implements ActionListener, MouseListen
                     stmt.setString(1, AccountField.getText().toLowerCase());
                     Hashing passHashing = new Hashing();
                     System.out.println( passHashing.Hashing(String.valueOf(passworField.getPassword())));
-              
                     ResultSet rs = stmt.executeQuery();
-               
                     if (rs.next()) {
-
                         if (VP.ValidatePassword(String.valueOf(passworField.getPassword()), rs.getString(2))){
-                            // System.out.println("Dang Nhap");
-                    
                         user2 = new User();
                         user2.name = rs.getString(3);
                         user2.UserName = rs.getString(1);
@@ -86,7 +82,7 @@ public class LoginCustomer extends JFrame implements ActionListener, MouseListen
                     if (user2 != null) {
                         this.dispose();
                         // Login.dispose();
-                   Customer cus = new Customer(user2);
+                   CustomerScreen cus = new CustomerScreen(user2);
                     }
                     else {
                         JOptionPane.showMessageDialog(this, "Tên Đăng Nhập hoặc mật khẩu không đúng", "Error", JOptionPane.ERROR_MESSAGE);

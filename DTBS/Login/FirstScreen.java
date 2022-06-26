@@ -1,3 +1,4 @@
+package Login;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -23,10 +24,12 @@ public FirstScreen(){
 public void actionPerformed(ActionEvent e) {
     // TODO Auto-generated method stub
     if (e.getSource()==ownerButton){
-
+        OwnerLoginCustom b = new OwnerLoginCustom();
+        this.dispose();
     }
     if (e.getSource()== customerButton){
         LoginCustomer a = new LoginCustomer();
+        this.dispose();
     }
     
 }
