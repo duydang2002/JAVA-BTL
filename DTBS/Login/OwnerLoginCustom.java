@@ -65,14 +65,7 @@ public class OwnerLoginCustom extends JFrame implements ActionListener {
                     if (rs.next()) {
 
                         if (VP.ValidatePassword(String.valueOf(passworField.getPassword()), rs.getString(2))){                                     
-                        user2 = new User();
-                        user2.name = rs.getString(3);
-                        user2.UserName = rs.getString(1);
-                        user2.phone = rs.getString(5);
-                        user2.address = rs.getString(4);
-                        user2.password = rs.getString(2);
-                        user2.Paid = rs.getInt(6);
-                        user2.Money= rs.getInt(7);
+                            Owner owner = new Owner();
                         JOptionPane.showMessageDialog(this, " Đăng Nhập Thành công", "Message", JOptionPane.PLAIN_MESSAGE);
                         }
                     }
