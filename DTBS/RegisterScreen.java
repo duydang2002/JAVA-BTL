@@ -1,4 +1,7 @@
 import javax.swing.*;
+
+import Hashing.Hashing;
+
 import java.awt.event.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -55,8 +58,8 @@ public class RegisterScreen extends JFrame implements ActionListener{
             String url = "jdbc:mysql://localhost:3306/javadatabase";
             String user = "root";
             String password = "";
-            String sqlInsert = "INSERT INTO `tblseller`(`Email`, `Password`, `Họ và tên`,`Địa Chỉ` ,`SĐT`,`Số tiền đã mua`,`Tiền đã nạp`) VALUES (?,?,?,?,?,?,?)";
-            String check = "SELECT * FROM `tblseller` where email=? AND SĐT=? "; 
+            String sqlInsert = "INSERT INTO `tblseller`(`Tên đăng nhập`, `Password`, `Họ và tên`,`Địa Chỉ` ,`SĐT`,`Số tiền đã mua`,`Tiền đã nạp`) VALUES (?,?,?,?,?,?,?)";
+            String check = "SELECT * FROM `tblseller` where `Tên đăng Nhập`=? AND SĐT=? "; 
             // String selectAll = "SELECT * FROM `tblseller`";
             boolean emailcheck =false;
             boolean phonecheck = false;
@@ -160,7 +163,7 @@ public class RegisterScreen extends JFrame implements ActionListener{
                     stmt.close();
                     conn.close();
                     this.dispose();
-                    Login back = new Login();
+                    LoginCustomer back = new LoginCustomer();
                  } 
                  catch(Exception E)
                  {
