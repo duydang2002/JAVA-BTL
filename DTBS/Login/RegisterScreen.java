@@ -57,8 +57,11 @@ public class RegisterScreen extends JFrame implements ActionListener{
         String phoneNum =  stdtexTextField.getText();
         String userName = userNamTextField.getText();
         char [] passtoString = passwordf.toCharArray(); 
-        int countNumbers = 0;
-        int countUpperCase=0;
+        char [] userNametoString = userName.toCharArray();
+        int countNumbersPass = 0;
+        int countUpperCasePass =0;
+        int countNumbersUserName = 0;
+
         if (e.getSource()==regisButton){
             
             String url = "jdbc:mysql://localhost:3306/javadatabase";
@@ -73,10 +76,15 @@ public class RegisterScreen extends JFrame implements ActionListener{
             // check the numbers
             for (int i = 0;i<passwordf.length();i++){
                 if (Character.isDigit(passtoString[i])){
-                   countNumbers++;
+                   countNumbersPass++;
                 }
                 if (Character.isUpperCase(passtoString[i]))
-                    countUpperCase++;
+                    countUpperCasePass++;
+            }
+            for (int i =0 ; i<userName.length();i++){
+                if (Character.isDigit(userNametoString[i])){
+                    countNumbersUserName++;
+                }
             }
             
             try(Connection conn= DriverManager.getConnection(url, user, password)){
@@ -112,6 +120,13 @@ public class RegisterScreen extends JFrame implements ActionListener{
                         JOptionPane.ERROR_MESSAGE);
                 return;
             }
+            if (userName.length()<8 && countNumbersUserName<2){
+                JOptionPane.showMessageDialog(this,
+                "User name must has 8 charactor or above and at least 2 number ",
+                "Try again",
+                JOptionPane.ERROR_MESSAGE);
+        return;
+            }
             if (userNameCheck){
                 JOptionPane.showMessageDialog(this,
                 "User name is used!",
@@ -119,6 +134,15 @@ public class RegisterScreen extends JFrame implements ActionListener{
                 JOptionPane.ERROR_MESSAGE);
         return;
             }
+            if (!checkNumOfPass()){
+                JOptionPane.showMessageDialog(this,
+                "Password must contain 8 charactor or above",
+                "Try again",
+                JOptionPane.ERROR_MESSAGE);
+        return;
+            }
+
+
             if (!checkPass()){
                 JOptionPane.showMessageDialog(this,
                 "Confirm Password does not match",
@@ -127,6 +151,7 @@ public class RegisterScreen extends JFrame implements ActionListener{
         return;
             
         }
+        
             if (!checkEmail()){
                 JOptionPane.showMessageDialog(this,
                 "Email not Correct!",
@@ -149,7 +174,7 @@ public class RegisterScreen extends JFrame implements ActionListener{
                 JOptionPane.ERROR_MESSAGE);
         return;
             }
-            if (countNumbers<2){
+            if (countNumbersPass<2){
                 JOptionPane.showMessageDialog(this,
                 "Not enough numbers!",
                 "Try again",
@@ -157,7 +182,7 @@ public class RegisterScreen extends JFrame implements ActionListener{
         return;
 
             }
-            if (countUpperCase<1){
+            if (countUpperCasePass<1){
                 JOptionPane.showMessageDialog(this,
                 "Not enough Uppercase!",
                 "Try again",
@@ -175,9 +200,7 @@ public class RegisterScreen extends JFrame implements ActionListener{
                     stmt.setInt(6, 0);
                     stmt.setInt(7, 0);
                     stmt.setString(8    ,email);
-                    stmt.execute();
-                    // break;
-                    // get data from table 'student'
+
                    JOptionPane.showMessageDialog(this, "<HTML> Đăng Kí thành công <HTML>");
                     stmt.close();
                     conn.close();
@@ -193,7 +216,11 @@ public class RegisterScreen extends JFrame implements ActionListener{
         
     }
     private boolean checkPass(){
-        if (String.valueOf(passwordField.getPassword()).equals(String.valueOf(repasswordField.getPassword()))) return true;
+        if (String.valueOf(passwordField.getPassword()).equals(String.valueOf(repasswordField.getPassword())) ) return true;
+        else return false;
+    }
+    private boolean checkNumOfPass(){
+        if (String.valueOf(passwordField.getPassword()).length()==8) return true;
         else return false;
     }
     private boolean checkEmail(){
@@ -201,5 +228,5 @@ public class RegisterScreen extends JFrame implements ActionListener{
         if (email.substring(email.length()-10, email.length()).equals("@gmail.com")) return true;
         else return false;
     }
-    
+
 }
