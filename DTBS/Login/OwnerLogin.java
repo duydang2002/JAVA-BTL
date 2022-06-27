@@ -13,14 +13,14 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-public class OwnerLoginCustom extends JFrame implements ActionListener {
+public class OwnerLogin extends JFrame implements ActionListener {
     JPanel Login =new JPanel();
     JLabel loginLabel = new JLabel("User Name:");
     JLabel passwordLabel = new JLabel("Password:");
     JButton loginButton= new JButton("Login");
     JTextField AccountField= new JTextField(20);
     JPasswordField passworField = new JPasswordField(20);
-    public OwnerLoginCustom(){
+    public OwnerLogin(){
         this.setLayout(new BorderLayout());
 
         Login.setLayout(new GridLayout(5,1));

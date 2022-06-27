@@ -143,7 +143,7 @@ public class RegisterScreen extends JFrame implements ActionListener{
             }
 
 
-            if (!checkPass()||){
+            if (!checkPass() ){
                 JOptionPane.showMessageDialog(this,
                 "Confirm Password does not match",
                 "Try again",
@@ -181,7 +181,7 @@ public class RegisterScreen extends JFrame implements ActionListener{
                 JOptionPane.ERROR_MESSAGE);
         return;
             }
-            if (phonecheck){
+            if (phonecheck|| phoneNum.length()<10 || phoneNum.charAt(0)!= 0){
                 JOptionPane.showMessageDialog(this,
                 "Phone Number is used or incorrect phone number!",
                 "Try again",
