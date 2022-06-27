@@ -24,7 +24,7 @@ public FirstScreen(){
 public void actionPerformed(ActionEvent e) {
     // TODO Auto-generated method stub
     if (e.getSource()==ownerButton){
-        OwnerLoginCustom b = new OwnerLoginCustom();
+        OwnerLogin b = new OwnerLogin();
         this.dispose();
     }
     if (e.getSource()== customerButton){

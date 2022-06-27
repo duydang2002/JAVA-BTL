@@ -120,9 +120,9 @@ public class RegisterScreen extends JFrame implements ActionListener{
                         JOptionPane.ERROR_MESSAGE);
                 return;
             }
-            if (userName.length()<8 && countNumbersUserName<2){
+            if (userName.length()<8 || countNumbersUserName<2){
                 JOptionPane.showMessageDialog(this,
-                "User name must has 8 charactor or above and at least 2 number ",
+                "User name must has 8 character or above and at least 2 number ",
                 "Try again",
                 JOptionPane.ERROR_MESSAGE);
         return;
@@ -136,22 +136,36 @@ public class RegisterScreen extends JFrame implements ActionListener{
             }
             if (!checkNumOfPass()){
                 JOptionPane.showMessageDialog(this,
-                "Password must contain 8 charactor or above",
+                "Password must contain 8 character or above",
                 "Try again",
                 JOptionPane.ERROR_MESSAGE);
         return;
             }
 
 
-            if (!checkPass()){
+            if (!checkPass()||){
                 JOptionPane.showMessageDialog(this,
                 "Confirm Password does not match",
                 "Try again",
                 JOptionPane.ERROR_MESSAGE);
         return;
-            
         }
-        
+        if (countNumbersPass<2){
+            JOptionPane.showMessageDialog(this,
+            "Not enough numbers!",
+            "Try again",
+            JOptionPane.ERROR_MESSAGE);
+    return;
+
+        }
+        if (countUpperCasePass<1){
+            JOptionPane.showMessageDialog(this,
+            "Not enough Uppercase!",
+            "Try again",
+            JOptionPane.ERROR_MESSAGE);
+    return;
+        }
+             
             if (!checkEmail()){
                 JOptionPane.showMessageDialog(this,
                 "Email not Correct!",
@@ -169,27 +183,12 @@ public class RegisterScreen extends JFrame implements ActionListener{
             }
             if (phonecheck){
                 JOptionPane.showMessageDialog(this,
-                "Phone Number is used!",
+                "Phone Number is used or incorrect phone number!",
                 "Try again",
                 JOptionPane.ERROR_MESSAGE);
         return;
             }
-            if (countNumbersPass<2){
-                JOptionPane.showMessageDialog(this,
-                "Not enough numbers!",
-                "Try again",
-                JOptionPane.ERROR_MESSAGE);
-        return;
-
-            }
-            if (countUpperCasePass<1){
-                JOptionPane.showMessageDialog(this,
-                "Not enough Uppercase!",
-                "Try again",
-                JOptionPane.ERROR_MESSAGE);
-        return;
-            }
-                      System.out.println(passDB.Hashing(passwordf));
+     System.out.println(passDB.Hashing(passwordf));
                     // select all student
                     stmt = conn.prepareStatement(sqlInsert);
                     stmt.setString(1,userName);
