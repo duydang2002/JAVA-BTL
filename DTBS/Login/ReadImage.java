@@ -17,14 +17,15 @@ public class ReadImage {
         String SqlSelect = "Select * from `tblnews` where `NewsName` = ? ";
 
         try (Connection conn = DriverManager.getConnection(url, user, password)){
-            File f= new File("Image.jpg");
+            // SqlSelect.lastIndexOf("\\")
+            File f= new File("C:\\Users\\T590\\OneDrive\\Documents\\Java\\"+"Image.png");
             FileOutputStream output = new FileOutputStream(f);
 
             PreparedStatement Ps = conn.prepareStatement(SqlSelect);
             Ps.setString(1,"initialize");
             ResultSet rs = Ps.executeQuery();
             while (rs.next()){
-                InputStream input = rs.getBinaryStream("NewsImage");
+                InputStream input = rs.getBinaryStream  ("NewsImage");
                 System.out.println("Reading NewsImage form database");
                 System.out.println(SqlSelect);
                 byte [] buffer = new byte[1024];
