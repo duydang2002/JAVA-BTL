@@ -13,7 +13,7 @@ public static void main(String[] args) {
     String user = "root";
     String password = "";
     String sql = "SELECT  `cusMessage`, `ID`, `Sender` FROM `tblchat` WHERE `Tên Đăng Nhập` = ?";
-
+    String sqlChat = "Insert Into `tblchat`(`Tên đăng nhập`, `cusMessage`, `Sender`) VALUES (?,?,?)";
     try (Connection conn = DriverManager.getConnection(url, user, password)){
         System.out.println("ket noi thanh cong");
         System.out.println(conn.getCatalog());
