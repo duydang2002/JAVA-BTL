@@ -9,14 +9,7 @@ import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
 public class ValidatePassword {
 
-public static void main(String[] args) {
-    try {
-        System.out.println(validatePassword("matkhau01","1000:aa0f1e0008d669bc2fd44a8cf21b59e5:4ab2168b3d62e6a38bf69f96a18ad5c0e05fdb276217ef0ccaff9b89540c169c108bc0ea32932bf9b30336f5e9681edce030da2acf2f8e25746add4c6bc96817"));
-    } catch (NoSuchAlgorithmException | InvalidKeySpecException e) {
-        // TODO Auto-generated catch block
-        e.printStackTrace();
-    }
-}
+
 public boolean ValidatePassword(String originalPassword,String storedPassword) throws NoSuchAlgorithmException, InvalidKeySpecException{
     return validatePassword(originalPassword, storedPassword);
 }

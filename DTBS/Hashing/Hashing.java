@@ -9,10 +9,10 @@ import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
 
 public class Hashing {
- public static void main(String[] args) throws NoSuchAlgorithmException, InvalidKeySpecException {
-    // String pass = "Matkhua01";
-    System.out.println(generatePasswordHasing("matkhau01"));
- }
+//  public static void main(String[] args) throws NoSuchAlgorithmException, InvalidKeySpecException {
+//     // String pass = "Matkhua01";
+//     System.out.println(generatePasswordHasing("matkhau01"));
+//  }
     public String Hashing (String a) throws NoSuchAlgorithmException, InvalidKeySpecException{
       
       return  generatePasswordHasing(a);

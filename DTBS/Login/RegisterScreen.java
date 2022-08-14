@@ -142,7 +142,6 @@ public class RegisterScreen extends JFrame implements ActionListener{
         return;
             }
 
-
             if (!checkPass() ){
                 JOptionPane.showMessageDialog(this,
                 "Confirm Password does not match",
@@ -181,7 +180,9 @@ public class RegisterScreen extends JFrame implements ActionListener{
                 JOptionPane.ERROR_MESSAGE);
         return;
             }
-            if (phonecheck|| phoneNum.length()<10 || phoneNum.charAt(0)!= 0){
+            if (phonecheck|| phoneNum.length()<10 || !String.valueOf(phoneNum.charAt(0)).equals("0") ){
+                System.out.println( String.valueOf(phoneNum.charAt(0)));
+                System.out.println(String.valueOf(phoneNum.charAt(0)).equals("0"));
                 JOptionPane.showMessageDialog(this,
                 "Phone Number is used or incorrect phone number!",
                 "Try again",
@@ -199,12 +200,13 @@ public class RegisterScreen extends JFrame implements ActionListener{
                     stmt.setInt(6, 0);
                     stmt.setInt(7, 0);
                     stmt.setString(8    ,email);
+                    stmt.execute();
 
                    JOptionPane.showMessageDialog(this, "<HTML> Đăng Kí thành công <HTML>");
                     stmt.close();
                     conn.close();
                     this.dispose();
-                    LoginCustomer back = new LoginCustomer();
+                 
                  } 
                  catch(Exception E)
                  {
@@ -219,12 +221,13 @@ public class RegisterScreen extends JFrame implements ActionListener{
         else return false;
     }
     private boolean checkNumOfPass(){
-        if (String.valueOf(passwordField.getPassword()).length()==8) return true;
+        if (String.valueOf(passwordField.getPassword()).length()>=8) return true;
         else return false;
     }
     private boolean checkEmail(){
       String email=  EmailtextField.getText();
-        if (email.substring(email.length()-10, email.length()).equals("@gmail.com")) return true;
+      if (email.length() <=10) return false;  
+      if (email.substring(email.length()-10, email.length()).equals("@gmail.com")) return true;
         else return false;
     }
 

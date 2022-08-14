@@ -91,9 +91,9 @@ public class UpdateImage extends JFrame implements ActionListener {
                 FileInputStream fis = new FileInputStream(f);
          
                 Ps.setBinaryStream(2, fis,fis.available());
-                Ps.setString(1, f.getAbsolutePath().substring(f.getAbsolutePath().lastIndexOf("/")+1));
-                Ps.setString(3, "ABCXYZ");
-                Ps.setInt(4, 2);
+                Ps.setString(1, "Machiatto Caramel");
+                Ps.setString(3, "Glory, glory, Ma..... Machiatto  Caramel!");
+                Ps.setDouble(4, 3.40);
                 Ps.execute();
                 JOptionPane.showMessageDialog(this, "Update Complete", "Successfull", JOptionPane.OK_CANCEL_OPTION);
             }
